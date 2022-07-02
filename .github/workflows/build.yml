@@ -1,0 +1,24 @@
+on:
+  push:
+name: build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get Previous tag
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
+      - name: Show current tag
+        run: echo ${{ steps.previoustag.outputs.tag }}
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@play-co"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PLAYCO_PACKAGES_TOKEN }}

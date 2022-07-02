@@ -1,0 +1,33 @@
+{
+  "name": "continuous-test",
+  "version": "1.4.0",
+  "main": "index.js",
+  "repository": "https://github.com/achamas-playco/continuous-test.git",
+  "author": "Ali Chamas <ali.chamas@play.co>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "commitizen": "^4.2.4",
+    "commitlint": "^17.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.18.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.0",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3"
+  },
+  "scripts": {
+    "postinstall": "npx husky install && chmod +x .husky/*commit*",
+    "commit": "git commit -m ''",
+    "latestTag": "git describe --tags --abbrev=0",
+    "deploy:stage": "git tag -f $(git describe --tags --abbrev=0)-deploy-staging && git push --tags",
+    "deploy:clear:stage": "git tag -d $TAG-deploy-staging && git push --delete origin $TAG-deploy-staging"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

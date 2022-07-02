@@ -1,0 +1,24 @@
+on:
+  push:
+name: deploy staging
+jobs:
+  deploy-staging:
+    if: startsWith(github.ref, 'refs/tags/v') && endsWith(github.ref, 'deploy-staging')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jungwinter/split@v2
+        id: split1
+        with:
+          separator: "refs/tags/"
+          msg: ${{ github.ref }}
+      - uses: jungwinter/split@v2
+        id: split2
+        with:
+          separator: "-deploy-staging"
+          msg: ${{ steps.split1.outputs._1 }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Reset to Tag
+        run: git reset --hard ${{ steps.split1.outputs._0 }}
+      - name: Deploy
+        run: 'echo "Deploying current tag: $(git describe --tags --abbrev=0) to staging..."'
