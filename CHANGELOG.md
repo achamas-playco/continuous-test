@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0](https://github.com/achamas-playco/continuous-test/compare/v1.0.0...v1.1.0) (2022-07-02)
+
+
+### Features
+
+* feat 2.a ([e785a08](https://github.com/achamas-playco/continuous-test/commit/e785a082747f6412678da8714deeaf3abec5881a))
+* feat 2.b ([e4865c9](https://github.com/achamas-playco/continuous-test/commit/e4865c95cc1258f6a21304665f36d278d8b3f11a))
+* feat 2.b ([a337805](https://github.com/achamas-playco/continuous-test/commit/a337805cef46fd5dcc0787b203ad65741ab89457))
+
 ## 1.0.0 (2022-07-02)
 
 
