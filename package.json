@@ -22,7 +22,7 @@
     "postinstall": "npx husky install && chmod +x .husky/*commit*",
     "commit": "git commit -m ''",
     "latestTag": "git describe --tags --abbrev=0",
-    "deploy:stage": "git tag -f $(git describe --tags --abbrev=0)-deploy-staging && git push --tags",
+    "deploy:stage": "'git tag -f $(git describe --tags --abbrev=0)-deploy-staging && git push --tags'",
     "deploy:clear:stage": "git tag -d $TAG-deploy-staging && git push --delete origin $TAG-deploy-staging"
   },
   "config": {
